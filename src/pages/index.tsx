@@ -6,9 +6,19 @@ import { api } from "@component/utils/api";
 import Navbar from "@component/components/Navbar";
 import RegisterForm from "@component/components/Register";
 import LoginForm from "@component/components/Login";
+import axios from "axios";
 
 export default function Home() {
-  const hello = api.post.hello.useQuery({ text: "from tRPC" });
+  const userData = {
+    name: 'John Doe',
+    email: 'john@example.com',
+    password: 'password123',
+  };
+  
+  const create = api.post.create.useQuery(
+    userData
+  );
+
   const [login, setLogin] = useState(false);
 
   return (

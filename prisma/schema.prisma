@@ -9,12 +9,13 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
+  url      = "postgresql://turonOver_owner:e5vol8FCHNhP@ep-shy-sunset-a111fcup.ap-southeast-1.aws.neon.tech/turonOver?sslmode=require"
+
 }
 
 model User {
   id       Int      @id @default(autoincrement())
-  name String
+  name     String
   email    String   @unique
   password String
 }

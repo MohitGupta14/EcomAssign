@@ -5,6 +5,7 @@ import { appRouter } from "@component/server/api/root";
 import { createTRPCContext } from "@component/server/api/trpc";
 
 // export API handler
+
 export default createNextApiHandler({
   router: appRouter,
   createContext: createTRPCContext,
