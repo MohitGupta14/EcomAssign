@@ -20,3 +20,7 @@ model User {
   password String
 }
 
+model Interest {
+  id       Int      @id @default(autoincrement())
+  type     String[]
+}
