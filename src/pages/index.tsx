@@ -9,15 +9,6 @@ import LoginForm from "@component/components/Login";
 import axios from "axios";
 
 export default function Home() {
-  const userData = {
-    name: 'John Doe',
-    email: 'john@example.com',
-    password: 'password123',
-  };
-  
-  const create = api.post.create.useQuery(
-    userData
-  );
 
   const [login, setLogin] = useState(false);
 

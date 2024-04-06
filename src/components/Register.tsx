@@ -37,7 +37,7 @@ const RegisterForm: React.FC<{ setLogin: (value: boolean) => void }> = ({ setLog
           </div>
         </div>
       </div>
-    ) : <OtpHandler email= {email} />
+    ) : <OtpHandler name = {name} email= {email} password = {password}/>
 
   );
 };
