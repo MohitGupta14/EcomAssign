@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+
+import React from "react";
 import { api } from "@component/utils/api";
-import LoginForm from "./Login";
 
 const OtpHandler: React.FC<{ name: string; email: string; password: string }> = ({ name, email, password }) => {
   const createUser = api.post.create.useMutation({
@@ -9,7 +10,7 @@ const OtpHandler: React.FC<{ name: string; email: string; password: string }> = 
     },
   });
 
-  const registerUser = async () => {
+  const registerUser = async () => {     
     try {
   
       const newUser =  createUser.mutate({
@@ -36,7 +37,7 @@ const OtpHandler: React.FC<{ name: string; email: string; password: string }> = 
                 <span className="font-medium">{email}</span>
               </div>
               <div id="otp" className="flex flex-row justify-center px-2 text-center">
-                {[...Array(8)].map((_, index) => (
+              {Array.from({ length: 8 }).map((_, index) => (
                   <input
                     key={index}
                     className="form-control m-2 h-10 w-10 rounded border text-center"

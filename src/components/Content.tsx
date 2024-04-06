@@ -10,7 +10,7 @@ const Content = () => {
 
   // Function to fetch interests from the database
   useEffect(() => {
-    const fetchInterests = async () => {
+    const fetchInterests =  () => {
       try {
         if (data) {
           const interestsArray = Object.values(data);

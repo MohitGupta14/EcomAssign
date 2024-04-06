@@ -41,7 +41,7 @@ export const postRouter = createTRPCRouter({
             password: hashedPassword,
           },
         });
-    
+        console.log(newUser);
         return "User created successfully:";
       } catch (error) {
         console.error("Error creating user:", error);
@@ -106,7 +106,7 @@ export const postRouter = createTRPCRouter({
   }),
 
   getInterests : publicProcedure
-  .query(async ({ ctx }) => {
+  .query(async ({}) => {
     try {
       // const interests = await ctx.db.interest.findMany();
       const interests =  [ "Shoes", "Car", "Jewelry", "Technology", "Travel",

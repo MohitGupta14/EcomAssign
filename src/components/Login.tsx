@@ -11,7 +11,7 @@ const LoginForm: React.FC<{ setLogin: (value: boolean) => void }> = ({ setLogin 
       console.log("User logged in:", data);
       setUserFound(true);
     },
-    onError: (error) => {
+    onError: () => {
       alert("Error logging in: Check your email and password");
     }
   });
@@ -50,7 +50,7 @@ const LoginForm: React.FC<{ setLogin: (value: boolean) => void }> = ({ setLogin 
               </div>
             </form>
             <div className='flex-wrap'>
-              <h2 className="text-sm md:text-base text-center justify-center font-light mt-4 md:mt-8 mb-8 md:mb-20 flex">Don't Have an Account?
+              <h2 className="text-sm md:text-base text-center justify-center font-light mt-4 md:mt-8 mb-8 md:mb-20 flex">Not Registered ?
                 <button className="text-gray-900 ml-1 md:ml-2 font-medium" onClick={() => setLogin(false)}>SIGN UP</button>
               </h2>
             </div>

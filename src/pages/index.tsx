@@ -1,8 +1,5 @@
 import Head from "next/head";
-import Link from "next/link";
-import { useEffect, useState } from "react";
-
-import { api } from "@component/utils/api";
+import { useState } from "react";
 import Navbar from "@component/components/Navbar";
 import LoginForm from "@component/components/Login";
 import RegisterForm from "@component/components/Register";
