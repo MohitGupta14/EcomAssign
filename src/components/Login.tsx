@@ -1,19 +1,18 @@
 import { api } from '@component/utils/api';
 import React, { useState } from 'react';
-import Content from './content';
+import Content from './Content';
 
 const LoginForm: React.FC<{ setLogin: (value: boolean) => void }> = ({ setLogin }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [userFound, setUserFound] = useState(true);
+  const [userFound, setUserFound] = useState(false);
   const loginUser = api.post.login.useMutation({
     onSuccess: (data) => {
       console.log("User logged in:", data);
       setUserFound(true);
     },
     onError: (error) => {
-      console.error("Error logging in:", error);
-      // Handle error, e.g., display error message to the user
+      alert("Error logging in: Check your email and password");
     }
   });
 
@@ -56,6 +55,7 @@ const LoginForm: React.FC<{ setLogin: (value: boolean) => void }> = ({ setLogin 
               </h2>
             </div>
           </div>
+        
         </div>
       )}
     </div>

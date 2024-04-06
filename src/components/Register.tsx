@@ -1,12 +1,19 @@
 import React, { useEffect, useState } from 'react';
-import Link from 'next/link';
 import OtpHandler from './otp';
 
 const RegisterForm: React.FC<{ setLogin: (value: boolean) => void }> = ({ setLogin }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState('');
+  const [isValid, setIsValid] = useState(false);
   const [otpClick, setOtpClick] = useState(false);
+
+  // Function to check if all fields are filled and password is valid
+  useEffect(() => {
+    const isPasswordValid = /^(?=.*[a-zA-Z])(?=.*\d).{8,}$/.test(password);
+    const isEmailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    setIsValid(name.trim() !== "" && isPasswordValid && isEmailValid);
+  }, [name, email, password]);
 
   return (
     !otpClick ? (
@@ -23,11 +30,11 @@ const RegisterForm: React.FC<{ setLogin: (value: boolean) => void }> = ({ setLog
               <input type="email" id="email" name="email" placeholder='Enter' className="border border-gray-300 rounded-md p-2 w-full" onChange={(e) => setEmail(e.target.value)} />
             </div>
             <div className="mb-4 md:mb-8">
-              <label htmlFor="password" className="block text-gray-700 font-light mb-1 md:mb-2">Password</label>
+              <label htmlFor="password" className="block text-gray-700 font-light mb-1 md:mb-2">Password (at least 8 characters with letters and numbers)</label>
               <input type="password" id="password" placeholder='Enter' name="password" className="border border-gray-300 rounded-md p-2 w-full" onChange={(e) => setPassword(e.target.value)} />
             </div>
             <div className="mb-4">
-              <button type="submit" className="bg-black text-white font-medium py-2 px-4 rounded-md w-full" onClick={() => setOtpClick(true)}>CREATE ACCOUNT</button>
+              <button type="submit" className={`bg-black text-white font-medium py-2 px-4 rounded-md w-full ${isValid ? '' : 'opacity-50 cursor-not-allowed'}`} onClick={() => setOtpClick(true)} disabled={!isValid}>CREATE ACCOUNT</button>
             </div>
           </form>
           <div className='flex-wrap '>
@@ -37,7 +44,7 @@ const RegisterForm: React.FC<{ setLogin: (value: boolean) => void }> = ({ setLog
           </div>
         </div>
       </div>
-    ) : <OtpHandler name = {name} email= {email} password = {password}/>
+    ) : <OtpHandler name={name} email={email} password={password} />
 
   );
 };

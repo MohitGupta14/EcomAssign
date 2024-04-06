@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { api } from "@component/utils/api";
+import LoginForm from "./Login";
 
 const OtpHandler: React.FC<{ name: string; email: string; password: string }> = ({ name, email, password }) => {
- 
   const createUser = api.post.create.useMutation({
-    onSuccess: () => {
-      console.log("User created")
+    onSuccess: (data) => {
+      alert(JSON.stringify(data))
     },
   });
 

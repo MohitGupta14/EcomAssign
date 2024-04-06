@@ -42,8 +42,7 @@ export const postRouter = createTRPCRouter({
           },
         });
     
-        console.log("User created successfully:", newUser);
-        return newUser;
+        return "User created successfully:";
       } catch (error) {
         console.error("Error creating user:", error);
         throw new Error("Failed to create user. Please try again later.");

@@ -4,11 +4,10 @@ import { useEffect, useState } from "react";
 
 import { api } from "@component/utils/api";
 import Navbar from "@component/components/Navbar";
-import RegisterForm from "@component/components/Register";
 import LoginForm from "@component/components/Login";
+import RegisterForm from "@component/components/Register";
 
 export default function Home() {
-  
   const [login, setLogin] = useState(false);
 
   return (
@@ -19,7 +18,7 @@ export default function Home() {
       </Head>
 
       <Navbar />
-
+      
       {login ? <LoginForm setLogin={setLogin} /> : <RegisterForm setLogin={setLogin} />}
     </div>
   );
