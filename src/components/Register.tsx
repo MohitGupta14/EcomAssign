@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import OtpHandler from './otp';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 const RegisterForm: React.FC<{ setLogin: (value: boolean) => void }> = ({ setLogin }) => {
   const [name, setName] = useState("");
@@ -7,6 +8,7 @@ const RegisterForm: React.FC<{ setLogin: (value: boolean) => void }> = ({ setLog
   const [password, setPassword] = useState('');
   const [isValid, setIsValid] = useState(false);
   const [otpClick, setOtpClick] = useState(false);
+  const [showPassword, setShowPassword] = useState(false); // State to toggle password visibility
 
   // Function to check if all fields are filled and password is valid
   useEffect(() => {
@@ -31,7 +33,16 @@ const RegisterForm: React.FC<{ setLogin: (value: boolean) => void }> = ({ setLog
             </div>
             <div className="mb-4 md:mb-8">
               <label htmlFor="password" className="block text-gray-700 font-light mb-1 md:mb-2">Password (at least 8 characters with letters and numbers)</label>
-              <input type="password" id="password" placeholder='Enter' name="password" className="border border-gray-300 rounded-md p-2 w-full" onChange={(e) => setPassword(e.target.value)} />
+              <div className="relative">
+                <input type={showPassword ? "text" : "password"} id="password" placeholder='Enter' name="password" className="border border-gray-300 rounded-md p-2 w-full pr-10" onChange={(e) => setPassword(e.target.value)} />
+                <span className="absolute inset-y-0 right-0 pr-3 flex items-center">
+                  {showPassword ? (
+                    <FaEyeSlash onClick={() => setShowPassword(false)} className="text-gray-500 cursor-pointer" />
+                  ) : (
+                    <FaEye onClick={() => setShowPassword(true)} className="text-gray-500 cursor-pointer" />
+                  )}
+                </span>
+              </div>
             </div>
             <div className="mb-4">
               <button type="submit" className={`bg-black text-white font-medium py-2 px-4 rounded-md w-full ${isValid ? '' : 'opacity-50 cursor-not-allowed'}`} onClick={() => setOtpClick(true)} disabled={!isValid}>CREATE ACCOUNT</button>
